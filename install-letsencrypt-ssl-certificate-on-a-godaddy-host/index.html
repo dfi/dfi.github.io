@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Install Let&#39;s Encrypt SSL certificate on a Godaddy host | TempCode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 获取证书参照 Let’s Encrypt Without Sudo
+加 -f 避免无法获取服务器 root 权限问题：
+1python sign_csr.py -f --public-key user.pub domain.csr &amp;gt; signed.crt
+2. 安装证书
+上传 domain.key 至 Private Keys (KEY)。
+
+上传 signed.crt 至 Cert">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install Let's Encrypt SSL certificate on a Godaddy host">
+<meta property="og:url" content="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/index.html">
+<meta property="og:site_name" content="TempCode">
+<meta property="og:description" content="1. 获取证书参照 Let’s Encrypt Without Sudo
+加 -f 避免无法获取服务器 root 权限问题：
+1python sign_csr.py -f --public-key user.pub domain.csr &amp;gt; signed.crt
+2. 安装证书
+上传 domain.key 至 Private Keys (KEY)。
+
+上传 signed.crt 至 Cert">
+<meta property="og:updated_time" content="2017-01-06T19:28:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Install Let's Encrypt SSL certificate on a Godaddy host">
+<meta name="twitter:description" content="1. 获取证书参照 Let’s Encrypt Without Sudo
+加 -f 避免无法获取服务器 root 权限问题：
+1python sign_csr.py -f --public-key user.pub domain.csr &amp;gt; signed.crt
+2. 安装证书
+上传 domain.key 至 Private Keys (KEY)。
+
+上传 signed.crt 至 Cert">
+  
+    <link rel="alternate" href="/atom.xml" title="TempCode" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90009334-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">TempCode</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tempcode.space"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-install-letsencrypt-ssl-certificate-on-a-godaddy-host" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/install-letsencrypt-ssl-certificate-on-a-godaddy-host/" class="article-date">
+  <time datetime="2017-01-06T08:25:26.000Z" itemprop="datePublished">2017-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Install Let&#39;s Encrypt SSL certificate on a Godaddy host
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-获取证书"><a href="#1-获取证书" class="headerlink" title="1. 获取证书"></a>1. 获取证书</h2><p>参照 <a href="https://github.com/diafygi/letsencrypt-nosudo" target="_blank" rel="external">Let’s Encrypt Without Sudo</a></p>
+<p>加 -f 避免无法获取服务器 root 权限问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python sign_csr.py -f --public-key user.pub domain.csr &gt; signed.crt</div></pre></td></tr></table></figure>
+<h2 id="2-安装证书"><a href="#2-安装证书" class="headerlink" title="2. 安装证书"></a>2. 安装证书</h2><ol>
+<li><p>上传 domain.key 至 Private Keys (KEY)。</p>
+</li>
+<li><p>上传 signed.crt 至 Certificates (CRT)。</p>
+</li>
+<li><p>在 Install and Manage SSL for your site (HTTPS) 里配置。</p>
+</li>
+</ol>
+<h2 id="3-http-gt-https"><a href="#3-http-gt-https" class="headerlink" title="3. http -&gt; https"></a>3. http -&gt; https</h2><p>参照 <a href="https://sg.godaddy.com/zh/help/redirect-http-to-https-automatically-8828" target="_blank" rel="external">Redirect HTTP to HTTPS automatically</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RewriteEngine On</div><div class="line">RewriteCond %&#123;HTTPS&#125; off</div><div class="line">RewriteRule ^(.*)$ https://%&#123;HTTP_HOST&#125;%&#123;REQUEST_URI&#125; [L,R=301]</div></pre></td></tr></table></figure>
+<h2 id="4-更新证书"><a href="#4-更新证书" class="headerlink" title="4. 更新证书"></a>4. 更新证书</h2><p>再次用这一步：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python sign_csr.py -f --public-key user.pub domain.csr &gt; signed_NEWER_DATE.crt</div></pre></td></tr></table></figure>
+<p>附一次完整的获取证书步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">v@debian:~$ ls</div><div class="line">sign_csr.py</div><div class="line">v@debian:~$ openssl genrsa 4096 &gt; user.key</div><div class="line">Generating RSA private key, 4096 bit long modulus</div><div class="line">.........++</div><div class="line">.........++</div><div class="line">e is 65537 (0x10001)</div><div class="line">v@debian:~$ openssl rsa -in user.key -pubout &gt; user.pub</div><div class="line">writing RSA key</div><div class="line">v@debian:~$ openssl genrsa 4096 &gt; domain.key</div><div class="line">Generating RSA private key, 4096 bit long modulus</div><div class="line">.........++</div><div class="line">.........++</div><div class="line">e is 65537 (0x10001)</div><div class="line">v@debian:~$ openssl req -new -sha256 -key domain.key -subj &quot;/&quot; -reqexts SAN -config &lt;(cat /etc/ssl/openssl.cnf &lt;(printf &quot;[SAN]\nsubjectAltName=DNS:tempcode.space,DNS:www.tempcode.space&quot;)) &gt; domain.csr</div><div class="line">v@debian:~$ python sign_csr.py -f --public-key user.pub domain.csr &gt; signed.crt</div><div class="line">Reading pubkey file...</div><div class="line">Found public key!</div><div class="line">Reading csr file...</div><div class="line">Found domains www.tempcode.space, tempcode.space</div><div class="line">STEP 1: What is your contact email? (webmaster@tempcode.space) USERNAME@tempcode.space</div><div class="line">Building request payloads...</div><div class="line">Building request for www.tempcode.space...</div><div class="line">Building request for tempcode.space...</div><div class="line">Building request for CSR...</div><div class="line">STEP 2: You need to sign some files (replace &apos;user.key&apos; with your user private key).</div><div class="line"></div><div class="line">openssl dgst -sha256 -sign user.key -out register_XXXXXX.sig register_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out domain_XXXXXX.sig domain_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out domain_XXXXXX.sig domain_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out cert_XXXXXX.sig cert_XXXXXX.json</div><div class="line"></div><div class="line">Press Enter when you&apos;ve run the above commands in a new terminal window...</div><div class="line">Registering USERNAME@tempcode.space...</div><div class="line">Requesting challenges for www.tempcode.space...</div><div class="line">Building challenge responses for www.tempcode.space...</div><div class="line">Requesting challenges for tempcode.space...</div><div class="line">Building challenge responses for tempcode.space...</div><div class="line">STEP 3: You need to sign some more files (replace &apos;user.key&apos; with your user private key).</div><div class="line"></div><div class="line">openssl dgst -sha256 -sign user.key -out challenge_XXXXXX.sig challenge_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out challenge_XXXXXX.sig challenge_XXXXXX.json</div><div class="line"></div><div class="line">Press Enter when you&apos;ve run the above commands in a new terminal window...</div><div class="line">STEP 4: Please update your server to serve the following file at this URL:</div><div class="line"></div><div class="line">--------------</div><div class="line">URL: http://www.tempcode.space/.well-known/acme-challenge/XXXXXXXXXXXXXXXX</div><div class="line">File contents: &quot;XXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX&quot;</div><div class="line">--------------</div><div class="line"></div><div class="line">Notes:</div><div class="line">- Do not include the quotes in the file.</div><div class="line">- The file should be one line without any spaces.</div><div class="line"></div><div class="line">Press Enter when you&apos;ve got the file hosted on your server...</div><div class="line">Requesting verification for www.tempcode.space...</div><div class="line">Waiting for www.tempcode.space challenge to pass...</div><div class="line">Passed www.tempcode.space challenge!</div><div class="line">STEP 5: Please update your server to serve the following file at this URL:</div><div class="line"></div><div class="line">--------------</div><div class="line">URL: http://tempcode.space/.well-known/acme-challenge/XXXXXXXXXXXXXXXX</div><div class="line">File contents: “XXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX”</div><div class="line">--------------</div><div class="line"></div><div class="line">Notes:</div><div class="line">- Do not include the quotes in the file.</div><div class="line">- The file should be one line without any spaces.</div><div class="line"></div><div class="line">Press Enter when you&apos;ve got the file hosted on your server...</div><div class="line">Requesting verification for tempcode.space...</div><div class="line">Waiting for tempcode.space challenge to pass...</div><div class="line">Passed tempcode.space challenge!</div><div class="line">Requesting signature...</div><div class="line">Certificate signed!</div><div class="line">You can remove the acme-challenge file from your webserver now.</div><div class="line">v@debian:~$</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/" data-id="cixoxsqg40000diqnr7jn93ne" class="article-share-link">Share</a>
+      
+        <a href="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/install-letsencrypt-ssl-certificate-on-a-godaddy-host/">Install Let&#39;s Encrypt SSL certificate on a Godaddy host</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Y<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'aname';
+  
+  var disqus_url = 'http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
