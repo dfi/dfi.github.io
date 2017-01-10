@@ -74,6 +74,79 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-response-to-brute-force-attack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/response-to-brute-force-attack/" class="article-date">
+  <time datetime="2017-01-10T09:26:03.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/response-to-brute-force-attack/">Response to Brute Force Attack</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="1-Check-logs"><a href="#1-Check-logs" class="headerlink" title="1. Check logs"></a>1. Check logs</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /var/log/secure | awk &apos;/Failed/&#123;print $(NF-3)&#125;&apos; | sort | uniq -c | awk &apos;&#123;print $2&quot; = &quot;$1;&#125;&apos;</div></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail -f /var/log/secure</div></pre></td></tr></table></figure>
+<p><code>/var/log/secure</code> on Redhat, <code>/var/log/auth.log</code> on Mandrake, etc…</p>
+<hr>
+<h2 id="2-Edit-SSH-configuration-file"><a href="#2-Edit-SSH-configuration-file" class="headerlink" title="2. Edit SSH configuration file"></a>2. Edit SSH configuration file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>Example</p>
+<pre><code>Port XXXXX # other than 22
+PermitRootLogin without-password # better to disable root login
+MaxAuthTries 6
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+</code></pre><p>Reload SSH</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service sshd reload</div></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl reload sshd</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-Use-tools-to-thwart-these-attacks"><a href="#3-Use-tools-to-thwart-these-attacks" class="headerlink" title="3. Use tools to thwart these attacks"></a>3. Use tools to thwart these attacks</h2><ul>
+<li><a href="http://www.fail2ban.org/wiki/index.php/Main_Page" target="_blank" rel="external">Fail2ban</a></li>
+<li><a href="http://denyhosts.sourceforge.net/" target="_blank" rel="external">DenyHosts</a></li>
+</ul>
+<hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://wiki.centos.org/HowTos/Network/SecuringSSH" target="_blank" rel="external">Securing OpenSSH</a></li>
+<li><a href="https://www.ibm.com/developerworks/aix/library/au-sshlocks/" target="_blank" rel="external">Three locks for your SSH door</a></li>
+<li><a href="http://tshare365.com/archives/2480.html" target="_blank" rel="external">Linux下检测SSH暴力破解攻击与防护功能</a></li>
+<li><a href="http://www.sijitao.net/ssh_attack" target="_blank" rel="external">发起SSH攻击IP地址</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7" target="_blank" rel="external">Initial Server Setup with CentOS 7</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/additional-recommended-steps-for-new-centos-7-servers" target="_blank" rel="external">Additional Recommended Steps for New CentOS 7 Servers</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/7-security-measures-to-protect-your-servers" target="_blank" rel="external">7 Security Measures to Protect Your Servers</a></li>
+<li><a href="https://blog.tankywoo.com/linux/2013/09/14/ssh-passwordauthentication-vs-challengeresponseauthentication.html" target="_blank" rel="external">SSH PasswordAuthentication vs ChallengeResponseAuthentication</a></li>
+<li><a href="http://www.hcsw.org/reading/chalresp.txt" target="_blank" rel="external">Challenge-Response Authentication for Dummys</a></li>
+<li><a href="https://github.com/dev-sec/chef-ssh-hardening/issues/96" target="_blank" rel="external">UsePAM should probably default to yes on Red Hat Linux 7</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tempcode.space/response-to-brute-force-attack/" data-id="cixrburoy00015gqnjzg91b6u" class="article-share-link">Share</a>
+      
+        <a href="http://tempcode.space/response-to-brute-force-attack/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-install-letsencrypt-ssl-certificate-on-a-godaddy-host" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/install-letsencrypt-ssl-certificate-on-a-godaddy-host/" class="article-date">
@@ -96,9 +169,11 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-获取证书"><a href="#1-获取证书" class="headerlink" title="1. 获取证书"></a>1. 获取证书</h2><p>参照 <a href="https://github.com/diafygi/letsencrypt-nosudo" target="_blank" rel="external">Let’s Encrypt Without Sudo</a></p>
+        <hr>
+<h2 id="1-获取证书"><a href="#1-获取证书" class="headerlink" title="1. 获取证书"></a>1. 获取证书</h2><p>参照 <a href="https://github.com/diafygi/letsencrypt-nosudo" target="_blank" rel="external">Let’s Encrypt Without Sudo</a></p>
 <p>加 -f 避免无法获取服务器 root 权限问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python sign_csr.py -f --public-key user.pub domain.csr &gt; signed.crt</div></pre></td></tr></table></figure>
+<hr>
 <h2 id="2-安装证书"><a href="#2-安装证书" class="headerlink" title="2. 安装证书"></a>2. 安装证书</h2><ol>
 <li><p>上传 domain.key 至 Private Keys (KEY)。</p>
 </li>
@@ -107,17 +182,19 @@ ga('send', 'pageview');
 <li><p>在 Install and Manage SSL for your site (HTTPS) 里配置。</p>
 </li>
 </ol>
+<hr>
 <h2 id="3-http-gt-https"><a href="#3-http-gt-https" class="headerlink" title="3. http -&gt; https"></a>3. http -&gt; https</h2><p>参照 <a href="https://sg.godaddy.com/zh/help/redirect-http-to-https-automatically-8828" target="_blank" rel="external">Redirect HTTP to HTTPS automatically</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RewriteEngine On</div><div class="line">RewriteCond %&#123;HTTPS&#125; off</div><div class="line">RewriteRule ^(.*)$ https://%&#123;HTTP_HOST&#125;%&#123;REQUEST_URI&#125; [L,R=301]</div></pre></td></tr></table></figure>
+<hr>
 <h2 id="4-更新证书"><a href="#4-更新证书" class="headerlink" title="4. 更新证书"></a>4. 更新证书</h2><p>再次用这一步：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python sign_csr.py -f --public-key user.pub domain.csr &gt; signed_NEWER_DATE.crt</div></pre></td></tr></table></figure>
-<p>附一次完整的获取证书步骤：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">v@debian:~$ ls</div><div class="line">sign_csr.py</div><div class="line">v@debian:~$ openssl genrsa 4096 &gt; user.key</div><div class="line">Generating RSA private key, 4096 bit long modulus</div><div class="line">.........++</div><div class="line">.........++</div><div class="line">e is 65537 (0x10001)</div><div class="line">v@debian:~$ openssl rsa -in user.key -pubout &gt; user.pub</div><div class="line">writing RSA key</div><div class="line">v@debian:~$ openssl genrsa 4096 &gt; domain.key</div><div class="line">Generating RSA private key, 4096 bit long modulus</div><div class="line">.........++</div><div class="line">.........++</div><div class="line">e is 65537 (0x10001)</div><div class="line">v@debian:~$ openssl req -new -sha256 -key domain.key -subj &quot;/&quot; -reqexts SAN -config &lt;(cat /etc/ssl/openssl.cnf &lt;(printf &quot;[SAN]\nsubjectAltName=DNS:tempcode.space,DNS:www.tempcode.space&quot;)) &gt; domain.csr</div><div class="line">v@debian:~$ python sign_csr.py -f --public-key user.pub domain.csr &gt; signed.crt</div><div class="line">Reading pubkey file...</div><div class="line">Found public key!</div><div class="line">Reading csr file...</div><div class="line">Found domains www.tempcode.space, tempcode.space</div><div class="line">STEP 1: What is your contact email? (webmaster@tempcode.space) USERNAME@tempcode.space</div><div class="line">Building request payloads...</div><div class="line">Building request for www.tempcode.space...</div><div class="line">Building request for tempcode.space...</div><div class="line">Building request for CSR...</div><div class="line">STEP 2: You need to sign some files (replace &apos;user.key&apos; with your user private key).</div><div class="line"></div><div class="line">openssl dgst -sha256 -sign user.key -out register_XXXXXX.sig register_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out domain_XXXXXX.sig domain_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out domain_XXXXXX.sig domain_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out cert_XXXXXX.sig cert_XXXXXX.json</div><div class="line"></div><div class="line">Press Enter when you&apos;ve run the above commands in a new terminal window...</div><div class="line">Registering USERNAME@tempcode.space...</div><div class="line">Requesting challenges for www.tempcode.space...</div><div class="line">Building challenge responses for www.tempcode.space...</div><div class="line">Requesting challenges for tempcode.space...</div><div class="line">Building challenge responses for tempcode.space...</div><div class="line">STEP 3: You need to sign some more files (replace &apos;user.key&apos; with your user private key).</div><div class="line"></div><div class="line">openssl dgst -sha256 -sign user.key -out challenge_XXXXXX.sig challenge_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out challenge_XXXXXX.sig challenge_XXXXXX.json</div><div class="line"></div><div class="line">Press Enter when you&apos;ve run the above commands in a new terminal window...</div><div class="line">STEP 4: Please update your server to serve the following file at this URL:</div><div class="line"></div><div class="line">--------------</div><div class="line">URL: http://www.tempcode.space/.well-known/acme-challenge/XXXXXXXXXXXXXXXX</div><div class="line">File contents: &quot;XXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX&quot;</div><div class="line">--------------</div><div class="line"></div><div class="line">Notes:</div><div class="line">- Do not include the quotes in the file.</div><div class="line">- The file should be one line without any spaces.</div><div class="line"></div><div class="line">Press Enter when you&apos;ve got the file hosted on your server...</div><div class="line">Requesting verification for www.tempcode.space...</div><div class="line">Waiting for www.tempcode.space challenge to pass...</div><div class="line">Passed www.tempcode.space challenge!</div><div class="line">STEP 5: Please update your server to serve the following file at this URL:</div><div class="line"></div><div class="line">--------------</div><div class="line">URL: http://tempcode.space/.well-known/acme-challenge/XXXXXXXXXXXXXXXX</div><div class="line">File contents: “XXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX”</div><div class="line">--------------</div><div class="line"></div><div class="line">Notes:</div><div class="line">- Do not include the quotes in the file.</div><div class="line">- The file should be one line without any spaces.</div><div class="line"></div><div class="line">Press Enter when you&apos;ve got the file hosted on your server...</div><div class="line">Requesting verification for tempcode.space...</div><div class="line">Waiting for tempcode.space challenge to pass...</div><div class="line">Passed tempcode.space challenge!</div><div class="line">Requesting signature...</div><div class="line">Certificate signed!</div><div class="line">You can remove the acme-challenge file from your webserver now.</div><div class="line">v@debian:~$</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="附一次完整的获取证书步骤："><a href="#附一次完整的获取证书步骤：" class="headerlink" title="附一次完整的获取证书步骤："></a>附一次完整的获取证书步骤：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">v@debian:~$ ls</div><div class="line">sign_csr.py</div><div class="line">v@debian:~$ openssl genrsa 4096 &gt; user.key</div><div class="line">Generating RSA private key, 4096 bit long modulus</div><div class="line">.........++</div><div class="line">.........++</div><div class="line">e is 65537 (0x10001)</div><div class="line">v@debian:~$ openssl rsa -in user.key -pubout &gt; user.pub</div><div class="line">writing RSA key</div><div class="line">v@debian:~$ openssl genrsa 4096 &gt; domain.key</div><div class="line">Generating RSA private key, 4096 bit long modulus</div><div class="line">.........++</div><div class="line">.........++</div><div class="line">e is 65537 (0x10001)</div><div class="line">v@debian:~$ openssl req -new -sha256 -key domain.key -subj &quot;/&quot; -reqexts SAN -config &lt;(cat /etc/ssl/openssl.cnf &lt;(printf &quot;[SAN]\nsubjectAltName=DNS:tempcode.space,DNS:www.tempcode.space&quot;)) &gt; domain.csr</div><div class="line">v@debian:~$ python sign_csr.py -f --public-key user.pub domain.csr &gt; signed.crt</div><div class="line">Reading pubkey file...</div><div class="line">Found public key!</div><div class="line">Reading csr file...</div><div class="line">Found domains www.tempcode.space, tempcode.space</div><div class="line">STEP 1: What is your contact email? (webmaster@tempcode.space) USERNAME@tempcode.space</div><div class="line">Building request payloads...</div><div class="line">Building request for www.tempcode.space...</div><div class="line">Building request for tempcode.space...</div><div class="line">Building request for CSR...</div><div class="line">STEP 2: You need to sign some files (replace &apos;user.key&apos; with your user private key).</div><div class="line"></div><div class="line">openssl dgst -sha256 -sign user.key -out register_XXXXXX.sig register_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out domain_XXXXXX.sig domain_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out domain_XXXXXX.sig domain_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out cert_XXXXXX.sig cert_XXXXXX.json</div><div class="line"></div><div class="line">Press Enter when you&apos;ve run the above commands in a new terminal window...</div><div class="line">Registering USERNAME@tempcode.space...</div><div class="line">Requesting challenges for www.tempcode.space...</div><div class="line">Building challenge responses for www.tempcode.space...</div><div class="line">Requesting challenges for tempcode.space...</div><div class="line">Building challenge responses for tempcode.space...</div><div class="line">STEP 3: You need to sign some more files (replace &apos;user.key&apos; with your user private key).</div><div class="line"></div><div class="line">openssl dgst -sha256 -sign user.key -out challenge_XXXXXX.sig challenge_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out challenge_XXXXXX.sig challenge_XXXXXX.json</div><div class="line"></div><div class="line">Press Enter when you&apos;ve run the above commands in a new terminal window...</div><div class="line">STEP 4: Please update your server to serve the following file at this URL:</div><div class="line"></div><div class="line">--------------</div><div class="line">URL: http://www.tempcode.space/.well-known/acme-challenge/XXXXXXXXXXXXXXXX</div><div class="line">File contents: &quot;XXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX&quot;</div><div class="line">--------------</div><div class="line"></div><div class="line">Notes:</div><div class="line">- Do not include the quotes in the file.</div><div class="line">- The file should be one line without any spaces.</div><div class="line"></div><div class="line">Press Enter when you&apos;ve got the file hosted on your server...</div><div class="line">Requesting verification for www.tempcode.space...</div><div class="line">Waiting for www.tempcode.space challenge to pass...</div><div class="line">Passed www.tempcode.space challenge!</div><div class="line">STEP 5: Please update your server to serve the following file at this URL:</div><div class="line"></div><div class="line">--------------</div><div class="line">URL: http://tempcode.space/.well-known/acme-challenge/XXXXXXXXXXXXXXXX</div><div class="line">File contents: “XXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX”</div><div class="line">--------------</div><div class="line"></div><div class="line">Notes:</div><div class="line">- Do not include the quotes in the file.</div><div class="line">- The file should be one line without any spaces.</div><div class="line"></div><div class="line">Press Enter when you&apos;ve got the file hosted on your server...</div><div class="line">Requesting verification for tempcode.space...</div><div class="line">Waiting for tempcode.space challenge to pass...</div><div class="line">Passed tempcode.space challenge!</div><div class="line">Requesting signature...</div><div class="line">Certificate signed!</div><div class="line">You can remove the acme-challenge file from your webserver now.</div><div class="line">v@debian:~$</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/" data-id="cixoxsqg40000diqnr7jn93ne" class="article-share-link">Share</a>
+      <a data-url="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/" data-id="cixrburot00005gqn3zydpy83" class="article-share-link">Share</a>
       
         <a href="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -157,6 +234,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/response-to-brute-force-attack/">Response to Brute Force Attack</a>
+          </li>
         
           <li>
             <a href="/install-letsencrypt-ssl-certificate-on-a-godaddy-host/">Install Let&#39;s Encrypt SSL certificate on a Godaddy host</a>
