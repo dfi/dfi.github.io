@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>What Methods are Called when the APP State Transitions Occur | TempCode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="启动：application(_:didFinishLaunchingWithOptions:)
+applicationDidBecomeActive
+
+按下 Home 键、锁屏：applicationWillResignActive
+applicationDidEnterBackground
+
+再次从桌面打开、解锁屏幕回到应用：applicationWillEnterForeground
+ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Methods are Called when the APP State Transitions Occur">
+<meta property="og:url" content="http://tempcode.space/what-methods-are-called-when-the-app-state-transitions-occur/index.html">
+<meta property="og:site_name" content="TempCode">
+<meta property="og:description" content="启动：application(_:didFinishLaunchingWithOptions:)
+applicationDidBecomeActive
+
+按下 Home 键、锁屏：applicationWillResignActive
+applicationDidEnterBackground
+
+再次从桌面打开、解锁屏幕回到应用：applicationWillEnterForeground
+ap">
+<meta property="og:updated_time" content="2017-01-11T17:23:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What Methods are Called when the APP State Transitions Occur">
+<meta name="twitter:description" content="启动：application(_:didFinishLaunchingWithOptions:)
+applicationDidBecomeActive
+
+按下 Home 键、锁屏：applicationWillResignActive
+applicationDidEnterBackground
+
+再次从桌面打开、解锁屏幕回到应用：applicationWillEnterForeground
+ap">
+  
+    <link rel="alternate" href="/atom.xml" title="TempCode" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90009334-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">TempCode</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tempcode.space"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-what-methods-are-called-when-the-app-state-transitions-occur" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/what-methods-are-called-when-the-app-state-transitions-occur/" class="article-date">
+  <time datetime="2017-01-10T12:59:17.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      What Methods are Called when the APP State Transitions Occur
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h5 id="启动："><a href="#启动：" class="headerlink" title="启动："></a>启动：</h5><pre><code>application(_:didFinishLaunchingWithOptions:)
+applicationDidBecomeActive
+</code></pre><hr>
+<h5 id="按下-Home-键、锁屏："><a href="#按下-Home-键、锁屏：" class="headerlink" title="按下 Home 键、锁屏："></a>按下 Home 键、锁屏：</h5><pre><code>applicationWillResignActive
+applicationDidEnterBackground
+</code></pre><hr>
+<h5 id="再次从桌面打开、解锁屏幕回到应用："><a href="#再次从桌面打开、解锁屏幕回到应用：" class="headerlink" title="再次从桌面打开、解锁屏幕回到应用："></a>再次从桌面打开、解锁屏幕回到应用：</h5><pre><code>applicationWillEnterForeground
+applicationDidBecomeActive
+</code></pre><hr>
+<h5 id="运行中打开、关闭通知中心或控制中心："><a href="#运行中打开、关闭通知中心或控制中心：" class="headerlink" title="运行中打开、关闭通知中心或控制中心："></a>运行中打开、关闭通知中心或控制中心：</h5><pre><code>applicationWillResignActive
+applicationDidBecomeActive
+</code></pre><hr>
+<h5 id="连按-Home-键两次："><a href="#连按-Home-键两次：" class="headerlink" title="连按 Home 键两次："></a>连按 Home 键两次：</h5><pre><code>applicationWillResignActive
+</code></pre><hr>
+<h5 id="上滑终止："><a href="#上滑终止：" class="headerlink" title="上滑终止："></a>上滑终止：</h5><pre><code>applicationDidEnterBackground
+applicationWillTerminate
+</code></pre><hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/TheAppLifeCycle/TheAppLifeCycle.html" target="_blank" rel="external">The App Life Cycle</a></li>
+<li><a href="https://developer.apple.com/reference/uikit/uiapplicationdelegate" target="_blank" rel="external">UIApplicationDelegate</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tempcode.space/what-methods-are-called-when-the-app-state-transitions-occur/" data-id="cixt7mbzg0000y8qnzj8e4mcd" class="article-share-link">Partager</a>
+      
+        <a href="http://tempcode.space/what-methods-are-called-when-the-app-state-transitions-occur/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/response-to-brute-force-attack/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Response to Brute Force Attack</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/what-methods-are-called-when-the-app-state-transitions-occur/">What Methods are Called when the APP State Transitions Occur</a>
+          </li>
+        
+          <li>
+            <a href="/response-to-brute-force-attack/">Response to Brute Force Attack</a>
+          </li>
+        
+          <li>
+            <a href="/install-letsencrypt-ssl-certificate-on-a-godaddy-host/">Install Let&#39;s Encrypt SSL certificate on a Godaddy host</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Y<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'aname';
+  
+  var disqus_url = 'http://tempcode.space/what-methods-are-called-when-the-app-state-transitions-occur/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
