@@ -25,7 +25,7 @@
 上传 domain.key 至 Private Keys (KEY)。
 
 上传 signed.crt 至 Ce">
-<meta property="og:updated_time" content="2017-01-10T10:31:55.000Z">
+<meta property="og:updated_time" content="2017-01-13T19:24:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Install Let's Encrypt SSL certificate on a Godaddy host">
 <meta name="twitter:description" content="1. 获取证书参照 Let’s Encrypt Without Sudo
@@ -86,9 +86,9 @@ ga('send', 'pageview');
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tempcode.space"></form>
@@ -138,15 +138,16 @@ ga('send', 'pageview');
 <hr>
 <h2 id="4-更新证书"><a href="#4-更新证书" class="headerlink" title="4. 更新证书"></a>4. 更新证书</h2><p>再次用这一步：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python sign_csr.py -f --public-key user.pub domain.csr &gt; signed_NEWER_DATE.crt</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <hr>
 <h3 id="附一次完整的获取证书步骤："><a href="#附一次完整的获取证书步骤：" class="headerlink" title="附一次完整的获取证书步骤："></a>附一次完整的获取证书步骤：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">v@debian:~$ ls</div><div class="line">sign_csr.py</div><div class="line">v@debian:~$ openssl genrsa 4096 &gt; user.key</div><div class="line">Generating RSA private key, 4096 bit long modulus</div><div class="line">.........++</div><div class="line">.........++</div><div class="line">e is 65537 (0x10001)</div><div class="line">v@debian:~$ openssl rsa -in user.key -pubout &gt; user.pub</div><div class="line">writing RSA key</div><div class="line">v@debian:~$ openssl genrsa 4096 &gt; domain.key</div><div class="line">Generating RSA private key, 4096 bit long modulus</div><div class="line">.........++</div><div class="line">.........++</div><div class="line">e is 65537 (0x10001)</div><div class="line">v@debian:~$ openssl req -new -sha256 -key domain.key -subj &quot;/&quot; -reqexts SAN -config &lt;(cat /etc/ssl/openssl.cnf &lt;(printf &quot;[SAN]\nsubjectAltName=DNS:tempcode.space,DNS:www.tempcode.space&quot;)) &gt; domain.csr</div><div class="line">v@debian:~$ python sign_csr.py -f --public-key user.pub domain.csr &gt; signed.crt</div><div class="line">Reading pubkey file...</div><div class="line">Found public key!</div><div class="line">Reading csr file...</div><div class="line">Found domains www.tempcode.space, tempcode.space</div><div class="line">STEP 1: What is your contact email? (webmaster@tempcode.space) USERNAME@tempcode.space</div><div class="line">Building request payloads...</div><div class="line">Building request for www.tempcode.space...</div><div class="line">Building request for tempcode.space...</div><div class="line">Building request for CSR...</div><div class="line">STEP 2: You need to sign some files (replace &apos;user.key&apos; with your user private key).</div><div class="line"></div><div class="line">openssl dgst -sha256 -sign user.key -out register_XXXXXX.sig register_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out domain_XXXXXX.sig domain_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out domain_XXXXXX.sig domain_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out cert_XXXXXX.sig cert_XXXXXX.json</div><div class="line"></div><div class="line">Press Enter when you&apos;ve run the above commands in a new terminal window...</div><div class="line">Registering USERNAME@tempcode.space...</div><div class="line">Requesting challenges for www.tempcode.space...</div><div class="line">Building challenge responses for www.tempcode.space...</div><div class="line">Requesting challenges for tempcode.space...</div><div class="line">Building challenge responses for tempcode.space...</div><div class="line">STEP 3: You need to sign some more files (replace &apos;user.key&apos; with your user private key).</div><div class="line"></div><div class="line">openssl dgst -sha256 -sign user.key -out challenge_XXXXXX.sig challenge_XXXXXX.json</div><div class="line">openssl dgst -sha256 -sign user.key -out challenge_XXXXXX.sig challenge_XXXXXX.json</div><div class="line"></div><div class="line">Press Enter when you&apos;ve run the above commands in a new terminal window...</div><div class="line">STEP 4: Please update your server to serve the following file at this URL:</div><div class="line"></div><div class="line">--------------</div><div class="line">URL: http://www.tempcode.space/.well-known/acme-challenge/XXXXXXXXXXXXXXXX</div><div class="line">File contents: &quot;XXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX&quot;</div><div class="line">--------------</div><div class="line"></div><div class="line">Notes:</div><div class="line">- Do not include the quotes in the file.</div><div class="line">- The file should be one line without any spaces.</div><div class="line"></div><div class="line">Press Enter when you&apos;ve got the file hosted on your server...</div><div class="line">Requesting verification for www.tempcode.space...</div><div class="line">Waiting for www.tempcode.space challenge to pass...</div><div class="line">Passed www.tempcode.space challenge!</div><div class="line">STEP 5: Please update your server to serve the following file at this URL:</div><div class="line"></div><div class="line">--------------</div><div class="line">URL: http://tempcode.space/.well-known/acme-challenge/XXXXXXXXXXXXXXXX</div><div class="line">File contents: “XXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX”</div><div class="line">--------------</div><div class="line"></div><div class="line">Notes:</div><div class="line">- Do not include the quotes in the file.</div><div class="line">- The file should be one line without any spaces.</div><div class="line"></div><div class="line">Press Enter when you&apos;ve got the file hosted on your server...</div><div class="line">Requesting verification for tempcode.space...</div><div class="line">Waiting for tempcode.space challenge to pass...</div><div class="line">Passed tempcode.space challenge!</div><div class="line">Requesting signature...</div><div class="line">Certificate signed!</div><div class="line">You can remove the acme-challenge file from your webserver now.</div><div class="line">v@debian:~$</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/" data-id="cixvy20yt00003bt4xlkdgay2" class="article-share-link">Share</a>
+      <a data-url="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/" data-id="cixw6w79a0000svt40o0kc9ag" class="article-share-link">Partager</a>
       
-        <a href="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://tempcode.space/install-letsencrypt-ssl-certificate-on-a-godaddy-host/#disqus_thread" class="article-comment-link">Commentaires</a>
       
       
     </footer>
@@ -156,7 +157,7 @@ ga('send', 'pageview');
 <nav id="article-nav">
   
     <a href="/response-to-brute-force-attack/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           Response to Brute Force Attack
@@ -200,7 +201,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -233,7 +234,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Y<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
